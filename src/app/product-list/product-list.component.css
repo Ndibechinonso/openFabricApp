@@ -27,10 +27,7 @@ text-decoration: none;
 .card h3{
   font-size: .75rem;
   padding: 8px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+ min-height: 42px;
 }
 .card .price{
   font-size: .875rem;
