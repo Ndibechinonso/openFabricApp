@@ -1,0 +1,70 @@
+
+
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">New Product</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+    <form [formGroup]="checkForm" (ngSubmit)="onSubmit()" >
+      <div class="form_group">
+        <label for="name">Name</label>
+        <input id="name" type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }"/>
+        <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+          <div *ngIf="f['name'].errors['required']">Product name is required</div>
+        </div>
+      </div>
+      <!-- <div class="form_group">
+        <label for="description">Description</label>
+        <input id="description" type="text" formControlName="description"/>
+      </div> -->
+      <div formArrayName="description">
+      <div *ngFor="let description of descriptions().controls; let i=index" [formGroupName]="i">
+        <label [for]="i">Description {{i + 1}}</label>
+        <input type="text" [id]="i" formControlName="value" class="form-control mb-2">
+        <button type="button" class="btn btn-danger" (click)="removeDescription(i)">Remove</button>
+      </div>
+    </div>
+      <button type="button" class="btn btn-outline-primary" (click)="addDescription()">Add description</button>
+
+      <div class="form_group">
+        <label for="price">Price</label>
+        <input id="price" type="number" formControlName="price" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['price'].errors }" />
+        <div *ngIf="submitted && f['price'].errors" class="invalid-feedback">
+          <div *ngIf="f['price'].errors['required']">Product price is required</div>
+        </div>
+      </div>
+      <div class="form_group">
+        <label for="img_link">Image Link</label>
+        <input id="img_link" type="text" formControlName="img_link" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['img_link'].errors }"/>
+        <div *ngIf="submitted && f['img_link'].errors" class="invalid-feedback">
+          <div *ngIf="f['img_link'].errors['required']">A valid image link is required</div>
+        </div>
+      </div>
+      <div class="form_group">
+        <label for="weight">Weight (in Kg)</label>
+        <input id="weight" type="number" formControlName="weight" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['weight'].errors }"/>
+        <div *ngIf="submitted && f['weight'].errors" class="invalid-feedback">
+          <div *ngIf="f['weight'].errors['required']">Product weight is required</div>
+        </div>
+      </div>
+      <div class="form_group">
+        <label for="vendor">Vendor</label>
+        <input id="vendor" type="text" formControlName="vendor" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['vendor'].errors }"/>
+        <div *ngIf="submitted && f['vendor'].errors" class="invalid-feedback">
+          <div *ngIf="f['vendor'].errors['required']">Vendor name is required</div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-outline-dark">Save Product</button>
+    </form>
+	</div>
+	<!-- <div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save Product</button>
+	</div> -->
+</ng-template>
+
+<button class="btn btn-lg btn-outline-primary mt-4" (click)="open(content)">Add Product</button>
+
+<hr />
+
+<pre>{{ closeResult }}</pre>

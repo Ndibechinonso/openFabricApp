@@ -1,0 +1,40 @@
+.input-group {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #e2e7f1;
+}
+
+.form-control.borderless-input{
+    border: none;
+  background: transparent;
+  }
+
+  .input-group-text.email-svg{
+    padding-right: 10px !important;
+    background: transparent;
+  }
+
+  .input-group-text{
+    background: transparent !important;
+  }
+
+.forget-password {
+  cursor: pointer;
+  padding-top: 8px;
+  padding-bottom: 18px;
+  color: #8D909E;
+}
+
+span.required {
+ /* margin-left: 0.2rem;*/
+  color: #fb8500 !important;
+}
+
+.input-group.input-group-div{
+  border: 1px solid #e2e7f1;;
+}
+

@@ -1,0 +1,17 @@
+<h1 class="product_title mb-10">Products</h1>
+<div class="card_grid">
+  <div *ngFor="let product of products" class="card">
+  <a [title]="product.name + ' details'" [routerLink]="['/products', product._id]">
+    <img [src]="product.img_link" alt="" height="300" width="300"/>
+    <h3>{{product.name}}</h3>
+    <!-- <ul *ngFor="let description of product.description">
+   <li>{{description}}</li>
+    </ul> -->
+    <p class="price">₦ {{product.price}}</p>
+  </a>
+</div>
+</div>
+<div *ngIf="isLoggedIn">
+  <app-new-product-form></app-new-product-form>
+</div>
+

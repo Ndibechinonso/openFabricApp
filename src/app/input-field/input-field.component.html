@@ -1,0 +1,72 @@
+<div class="form-group">
+ <label class="form-control-label">
+   {{ label }}<span *ngIf="requiredDate" class="text-danger">*</span>
+ </label>
+<!--  <div *ngIf="type != 'email' && type != 'password' && type != 'textarea'">-->
+<!--    <input-->
+<!--      [class.is-invalid]=""-->
+<!--      [type]="type"-->
+<!--      class="form-control {{ class }}"-->
+<!--      [id]="id"-->
+<!--      [placeholder]="placeholder"-->
+<!--      [value]="value"-->
+<!--      #input-->
+<!--      (blur)="onTouched()"-->
+<!--      [required]="isRequired"-->
+<!--      (input)="onChange($event.target.value)"-->
+<!--    />-->
+<!--    <span-->
+<!--      class="text-danger"-->
+<!--      *ngIf="-->
+<!--        isRequired &&-->
+<!--        input.value.length <= 0 &&-->
+<!--        !ngControl.control?.valid &&-->
+<!--        ngControl.control?.touched-->
+<!--      "-->
+<!--      >{{ errorMsg }}</span-->
+<!--    >-->
+<!--    <span-->
+<!--      class="text-danger"-->
+<!--      *ngIf="-->
+<!--        isRequired &&-->
+<!--        input.value.length > 0 &&-->
+<!--        !ngControl.control?.valid &&-->
+<!--        ngControl.control?.touched-->
+<!--      "-->
+<!--      >{{ invalidErrorMsg }}</span-->
+<!--    >-->
+<!--  </div>-->
+   <div *ngIf="type == 'email'">
+   <div class="input-group input-group-merge input-group-div" >
+
+       <input [class.is-invalid]="" [type]="type"  class="form-control borderless-input borderless-input-email" [id]="id"
+              [placeholder]="'you@example.com'"  [value]="value" #input (blur)="onTouched()"  (input)="onChange($event)"/>
+       </div>
+     <span class="text-danger"
+           *ngIf="isRequired && input.value.length <= 0 && !ngControl.control?.valid && ngControl.control?.touched">{{errorMsg}}</span>
+     <span class="text-danger"
+           *ngIf="isRequired && input.value.length > 0 && !ngControl.control?.valid && ngControl.control?.touched">{{invalidErrorMsg}}</span>
+   </div>
+   <div *ngIf="type == 'password'">
+   <div class="input-group input-group-merge input-group-div" >
+     <input [ngClass]="ngClass"  [type]="type" [type]="fieldTextType ? 'text' : 'password'" class="form-control borderless-input borderless-input-password" [id]="id"
+            [placeholder]="placeholder" [value]="value" #input (blur)="onTouched()"  (input)="onChange($event)"/>
+     <div  class="input-group-append" >
+       <span  class="input-group-text my-pointer border-0"> <i class="uil" [ngClass]="{'uil-eye': !fieldTextType, 'uil-eye-slash': fieldTextType }" (click)="toggleFieldType()" ></i></span>
+     </div>
+   </div>
+   <span
+     class="text-danger"
+     *ngIf="
+       ngControl &&
+       !ngControl.control?.valid &&
+       ngControl.control?.touched &&
+       ngControl.control?.hasError('required')
+     "
+   >
+     {{ errorMsg }}
+   </span>
+   </div>
+</div>
+
+

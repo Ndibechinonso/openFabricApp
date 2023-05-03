@@ -1,0 +1,50 @@
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Login</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+    <form name="loginForm" class="authentication-form login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+      <div class="form_group">
+        <label for="email">Email</label>
+        <input id="email" class="form-control" type="text" formControlName="email"  [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"/>
+        <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+          <div *ngIf="f['email'].errors['required']">Email is required</div>
+          <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+        </div>
+
+</div>
+
+      <div class="form_group">
+        <label for="password">Password</label>
+        <input id="password" type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+        />
+        <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+          <div *ngIf="f['password'].errors['required']">Password is required</div>
+          </div>
+      </div>
+
+      <button type="submit" class="btn btn-lg btn-outline-primary login-btn" [disabled]="submitted">Login</button>
+    </form>
+	</div>
+	<!-- <div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save Product</button>
+	</div> -->
+</ng-template>
+
+
+<!-- <div *ngIf="!currentUser"; else currentUser">
+  Welcome back, friend.
+</div>
+
+<ng-template #currentUser>
+  Please friend, login.
+</ng-template> -->
+<div *ngIf="!isLoggedIn">
+  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Login</button>
+</div>
+<div *ngIf="isLoggedIn">
+  <button class="btn btn-lg btn-outline-primary" (click)="logout()">Logout</button>
+</div>
+<!-- <ng-template #isLogin><button class="btn btn-lg btn-outline-primary" (click)="logout()">Logout</button>
+</ng-template> -->

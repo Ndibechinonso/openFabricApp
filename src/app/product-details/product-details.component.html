@@ -1,0 +1,27 @@
+<!-- <h2 class="text-medium pl-4">Product Details</h2> -->
+
+<div *ngIf="product" class="product_container">
+  <div class="product_grid">
+  <div>
+<img [src]="product.img_link" [alt]="product.name"/>
+  </div>
+  <div class="product_details">
+    <h3 class="product_title text-normal">{{ product.name }}</h3>
+    <h3 class="text-bold">{{ product.price | currency }}</h3>
+
+    <h3 class="text-medium">Seller: </h3>
+    <p>{{product.vendor}}</p>
+  </div>
+</div>
+  <div>
+    <div class="details_header"><h3 class="text-medium">Product details</h3> <div *ngIf="isLoggedIn"> <app-edit-product [product]="product"></app-edit-product></div>
+    </div>
+    <ul *ngFor="let description of product.description">
+   <li class="text-base">{{description['value']}}</li>
+ </ul>
+  </div>
+</div>
+<!-- <div *ngIf="showEdit"> -->
+
+<!-- </div> -->
+

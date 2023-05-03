@@ -1,0 +1,35 @@
+<!-- <form [formGroup]="checkForm" (ngSubmit)="onSubmit()" >
+  <div formArrayName="description">
+  <div *ngFor="let description of descriptions().controls; let i=index" [formGroupName]="i">
+    <input type="text" formControlName="value" class="form-control">
+    <button type="button" (click)="removeDescription(i)">Remove</button>
+  </div>
+</div>
+  <button type="button" (click)="addDescription()">ADD</button>
+
+  <button type="submit" class="btn btn-outline-dark">Save Product</button>
+</form> -->
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Edit Product</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+<div>
+  <form [formGroup]="editProductForm" (ngSubmit)="onSubmit()">
+    <div formArrayName="editProductDescriptionFormArray">
+    <div *ngFor="let description of editProductDescriptionFormArray?.controls; let i = index" [formGroupName]="i">
+      <input type="text" formControlName="value" class="form-control" >
+       <button type="button" (click)="removeDescription(i)">Remove</button>
+    </div>
+
+  </div>
+     <button type="button" (click)="addDescription()">Add description</button>
+
+    <button type="submit" class="btn btn-outline-primary">Save Changes</button>
+  </form>
+  </div>
+  </div>
+</ng-template>
+
+<button type="button" (click)="openEditFormModal(content)">Edit details</button>
