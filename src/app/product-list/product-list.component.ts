@@ -12,6 +12,7 @@ import { AuthenticationService } from '../auth.service';
 })
 export class ProductListComponent implements OnInit {
   products: any
+  loading = false;
   isLoggedIn = false;
   currentUser = this.authenticationService.currentUser();
 
@@ -22,7 +23,9 @@ constructor(private productService: UserService, private dataService: DataServic
   })
 }
   getProducts(): void{
-    this.productService.getAllProducts().subscribe((res)=> this.products = res.products
+    this.loading = true;
+    this.productService.getAllProducts().subscribe((res)=> {this.products = res.products;
+    this.loading = false}
     )
   }
   checkIsLogin(){

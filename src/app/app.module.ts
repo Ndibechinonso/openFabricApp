@@ -17,6 +17,7 @@ import { ErrorInterceptor } from './core/helpers/error.interceptor';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ToastrModule } from 'ngx-toastr';
     InputFieldComponent,
     LoginComponent,
     EditProductComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,

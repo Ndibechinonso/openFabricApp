@@ -13,6 +13,7 @@ export class ProductDetailsComponent implements OnInit, AfterContentChecked {
 product: Product | undefined;
 products = []
 routeParams: any;
+loading = false;
 productIdFromRoute: any;
 isLoggedIn = false;
 currentUser = this.authenticationService.currentUser();
@@ -43,7 +44,8 @@ checkIsLogin(){
     }
   }
   getProducts(): void{
-    this.productService.getAllProducts().subscribe((res)=> {this.products = res.products}
+    this.loading = true;
+    this.productService.getAllProducts().subscribe((res)=> {this.products = res.products; this.loading = false}
     )
   }
 

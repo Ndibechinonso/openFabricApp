@@ -1,5 +1,6 @@
-<!-- <h2 class="text-medium pl-4">Product Details</h2> -->
-
+<div  *ngIf="loading">
+  <app-loader></app-loader>
+</div>
 <div *ngIf="product" class="product_container">
   <div class="product_grid">
   <div>

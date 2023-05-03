@@ -2,6 +2,9 @@
 <div *ngIf="products && (products.length < 1)">
   No Products
 </div>
+<div  *ngIf="loading">
+  <app-loader></app-loader>
+</div>
 <div class="card_grid" *ngIf="products">
   <div *ngFor="let product of products" class="card">
   <a [title]="product.name + ' details'" [routerLink]="['/products', product._id]">
