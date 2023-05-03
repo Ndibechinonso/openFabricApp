@@ -11,11 +11,13 @@
   justify-content: space-between;
 }
 .card{
-  /* max-height: 200px; */
-  /* padding: 25px; */
   background-color: rgba(255,255,255,.1);
   border: solid 2px rgba(255,255,255,.21);
   border-radius: 10px;
+  box-shadow: 0 12px 46px 1px rgba(0,0,0,.04);
+}
+.card:hover{
+  border: solid 2px blue;
   box-shadow: 0 12px 46px 1px rgba(0,0,0,.04);
 }
 .card a{
