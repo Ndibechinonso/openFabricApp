@@ -2,7 +2,7 @@
 <div *ngIf="(products.length < 1)">
   No Products
 </div>
-<div class="card_grid">
+<div class="card_grid" *ngIf="products">
   <div *ngFor="let product of products" class="card">
   <a [title]="product.name + ' details'" [routerLink]="['/products', product._id]">
     <img [src]="product.img_link" alt="" height="300" width="300"/>
