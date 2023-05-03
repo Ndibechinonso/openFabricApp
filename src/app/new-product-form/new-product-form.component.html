@@ -29,7 +29,7 @@
 
       <div class="form_group">
         <label for="price">Price</label>
-        <input id="price" type="number" formControlName="price" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['price'].errors }" />
+        <input id="price" min="0" type="number" formControlName="price" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['price'].errors }" />
         <div *ngIf="submitted && f['price'].errors" class="invalid-feedback">
           <div *ngIf="f['price'].errors['required']">Product price is required</div>
         </div>
@@ -43,7 +43,7 @@
       </div>
       <div class="form_group">
         <label for="weight">Weight (in Kg)</label>
-        <input id="weight" type="number" formControlName="weight" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['weight'].errors }"/>
+        <input id="weight" min="0" type="number" formControlName="weight" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['weight'].errors }"/>
         <div *ngIf="submitted && f['weight'].errors" class="invalid-feedback">
           <div *ngIf="f['weight'].errors['required']">Product weight is required</div>
         </div>
