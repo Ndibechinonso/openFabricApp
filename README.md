@@ -1,3 +1,12 @@
+Frontend (Angular) Github: https://github.com/Ndibechinonso/openFabricApp
+
+Frontend (Angular) Hosted URL: https://open-fabric-app.vercel.app/
+
+
+Backend (ExpressJs) Github: https://github.com/Ndibechinonso/openFabricServer
+
+Backend (ExpressJs) Hosted URL: https://openfabricserver-production.up.railway.app/
+
 # Fullstack Junior Developer (Intern) Test
 
 Welcome! and thank you for applying!
