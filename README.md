@@ -1,3 +1,5 @@
+LOGIN DETAILS:  username: edwardndibe@gmail.com , password: 12345
+
 Frontend (Angular) Github: https://github.com/Ndibechinonso/openFabricApp
 
 Frontend (Angular) Hosted URL: https://open-fabric-app.vercel.app/
@@ -6,6 +8,8 @@ Frontend (Angular) Hosted URL: https://open-fabric-app.vercel.app/
 Backend (ExpressJs) Github: https://github.com/Ndibechinonso/openFabricServer
 
 Backend (ExpressJs) Hosted URL: https://openfabricserver-production.up.railway.app/
+
+Database used: Mongoose
 
 # Fullstack Junior Developer (Intern) Test
 
