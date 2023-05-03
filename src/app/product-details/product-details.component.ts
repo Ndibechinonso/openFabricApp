@@ -22,11 +22,10 @@ constructor(private route: ActivatedRoute, private productService: UserService, 
   this.dataService.dataType$.subscribe(data => {
     this.isLoggedIn = data;
   })
+  this.dataService.products$.subscribe(data => {
+    this.getProducts()
+  })
  }
-
-// checkIsLogin(){
-//   return JSON.stringify(this.currentUser) !== '{}'
-// }
 checkIsLogin(){
   JSON.stringify(this.currentUser) === '{}' ? this.isLoggedIn = false : this.isLoggedIn = true;
 }
@@ -47,7 +46,5 @@ checkIsLogin(){
     this.productService.getAllProducts().subscribe((res)=> {this.products = res.products}
     )
   }
-  // editDetails(){
-  //   this.dataService.sendData(this.product?.description)
-  // }
+
 }

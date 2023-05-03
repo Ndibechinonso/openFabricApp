@@ -24,9 +24,7 @@ export class EditProductComponent implements OnInit {
   editProductDescriptionFormArray: FormArray | undefined;
 constructor(private dataService: DataService, private formBuilder: FormBuilder, private modalService: NgbModal, private productService : UserService, private toastr: ToastrService){}
 
-myTest = ['abc','def', 'fgh']
 ngOnChanges(changes: SimpleChanges) {
-  // changes.prop contains the old and the new value...
   this.product = changes['product'].currentValue
 }
 ngOnInit(): void {
@@ -39,10 +37,12 @@ openEditFormModal(content: any){
 }
 
 onSubmit(){
-  console.warn(this.editProductDescriptionFormArray?.value);
   const filteredDescription = this.editProductDescriptionFormArray?.value.filter((des: any) => des.value.trim().length > 0)
 
   this.productService.editProductDescription(this.product._id, filteredDescription).subscribe((data)=> { this.toastr.success(data.message, '', {closeButton: true});
+  this.createFormModalReference.close()
+
+  this.dataService.initiateFetch("fetchData")
 }
   )
 }

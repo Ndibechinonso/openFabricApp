@@ -17,6 +17,9 @@ export class ProductListComponent implements OnInit {
 
 constructor(private productService: UserService, private dataService: DataService, private authenticationService : AuthenticationService){
   this.dataService.dataType$.subscribe((data) => this.isLoggedIn = data)
+  this.dataService.products$.subscribe(data => {
+    this.getProducts()
+  })
 }
   getProducts(): void{
     this.productService.getAllProducts().subscribe((res)=> this.products = res.products
@@ -29,4 +32,5 @@ constructor(private productService: UserService, private dataService: DataServic
     this.getProducts()
     this.checkIsLogin()
   }
+
 }

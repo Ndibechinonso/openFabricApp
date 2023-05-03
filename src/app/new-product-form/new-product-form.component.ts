@@ -4,6 +4,7 @@ import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../user.service';
 import { AuthenticationService } from '../auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-new-product-form',
@@ -19,7 +20,7 @@ export class NewProductFormComponent implements OnInit {
   isLoggedIn = false
   currentUser = this.authenticationService.currentUser();
   // values: any = []
-constructor(private formBuilder: FormBuilder, private modalService: NgbModal, private productService: UserService, private authenticationService : AuthenticationService,  private toastr: ToastrService){ }
+constructor(private formBuilder: FormBuilder, private modalService: NgbModal, private productService: UserService, private authenticationService : AuthenticationService,  private toastr: ToastrService, private dataService: DataService){ }
 
 open(content: any) {
   this.createFormModalReference = this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', centered: true })
@@ -75,9 +76,13 @@ onSubmit(): void{
 
   // this.checkForm.value.description = JSON.parse(JSON.stringify(this.values))
   this.productService.addProduct(this.checkForm.value).subscribe((data)=> {
-    this.toastr.success(data.message, '', {closeButton: true});
-    this.initializeProductForm()
-    this.createFormModalReference.close()
+    if(data.success === true){
+      this.toastr.success(data.message, '', {closeButton: true});
+      this.initializeProductForm()
+      this.createFormModalReference.close()
+      this.dataService.initiateFetch("fetchData")
+    }
+
   }
   )
   this.submitted = false;

@@ -6,6 +6,10 @@
   margin: 0;
   box-sizing: border-box;
 }
+.modal-body{
+  overflow-y: scroll;
+    max-height: 70vh;
+}
 
 .text-base{
   font-size: 1rem;

@@ -19,14 +19,15 @@
   <form [formGroup]="editProductForm" (ngSubmit)="onSubmit()">
     <div formArrayName="editProductDescriptionFormArray">
     <div *ngFor="let description of editProductDescriptionFormArray?.controls; let i = index" [formGroupName]="i">
-      <input type="text" formControlName="value" class="form-control" >
-       <button type="button" (click)="removeDescription(i)">Remove</button>
+      <label [for]="i">Description {{i + 1}}</label>
+      <input type="text" formControlName="value" class="form-control mb-2" >
+       <button type="button" class="btn btn-danger mb-4" (click)="removeDescription(i)">Remove</button>
     </div>
 
   </div>
-     <button type="button" (click)="addDescription()">Add description</button>
+     <button type="button" class="btn btn-success border-0 outline-0" (click)="addDescription()">Add description</button>
 
-    <button type="submit" class="btn btn-outline-primary">Save Changes</button>
+    <button type="submit" class="btn btn-lg btn-outline-primary mt-4">Save Changes</button>
   </form>
   </div>
   </div>
